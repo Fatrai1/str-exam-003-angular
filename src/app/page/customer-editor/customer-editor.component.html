@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <!-- <div *ngIf="customer$ | async as customer" class="col-6 offset-3">
+            </div> -->
+            <h2 class="text-center">Felhasználó létrehozása</h2>
+            <form #customerForm="ngForm" (ngSubmit)="onCreate(customer)">
+                <input name="id" type="hidden" [(ngModel)]="customer.id">
+                <div class="form-group">
+                    <label for="name">Név</label>
+                    <input id="name" class="form-control" type="text" name="name" 
+                    [(ngModel)]="customer.name" pattern=".{3,25}" required>
+                    <div [hidden]="customerForm.controls.name?.valid" class="error-message">
+                        A név minimum 3, maximum 25 karakterből állhat
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" class="form-control" type="text" name="email" 
+                    [(ngModel)]="customer.email" pattern="[a-zA-Z0-9._]+@[a-zA-Z0-9]+.[a-z]{2,3}" required>
+                    <div [hidden]="customerForm.controls.email?.valid" class="error-message">
+                        Az email-nek email formátumúnak kell lennie 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Értékelés</label>
+                    <input id="rating" class="form-control" type="number" name="rating" 
+                    [(ngModel)]="customer.rating" pattern="[1-5]" required>
+                    <div [hidden]="customerForm.controls.rating?.valid" class="error-message">
+                        Az értékelés csak 1-5 számok lehetnek
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Cím</label>
+                    <input id="address" class="form-control" type="text" name="address" 
+                    [(ngModel)]="customer.address" pattern="^[a-záéöüóőúíÁÉÖÜÓŐÚŰÍA-Z0-9 .-/]{5,50}" required>
+                    <div [hidden]="customerForm.controls.address?.valid" class="error-message">
+                        A cím legalább 5 maximum 50 karakter lehet.
+                    </div>
+                </div>
+                <button [disabled]="customerForm.invalid" type="submit" class="btn btn-primary btn-block mt-5">
+                    <i class="fa fa-save"></i>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
